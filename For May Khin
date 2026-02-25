@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For May Khin 🌸</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffe6f0, #e6f0ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", sans-serif;
+    overflow: hidden;
+}
+
+.card {
+    background: rgba(255,255,255,0.95);
+    padding: 35px 40px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    animation: fadeIn 1.2s ease;
+    max-width: 420px;
+    width: 90%;
+}
+
+h1 {
+    color: #ff5c8a;
+    font-weight: 600;
+}
+
+p {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.6;
+}
+
+.buttons {
+    margin-top: 25px;
+}
+
+button {
+    font-size: 18px;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+#yes {
+    background: #ff5c8a;
+    color: white;
+}
+
+#no {
+    background: #ddd;
+}
+
+#message {
+    display: none;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* floating hearts */
+.heart {
+    position: absolute;
+    font-size: 18px;
+    animation: float 6s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 0.6; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+
+<!-- Password Protection Script - MOVED TO HEAD -->
+<script>
+// Simple password protection - runs immediately when page loads
+window.onload = function() {
+    var password = prompt("🔒 This is a special surprise\nPlease enter the password to continue:");
+    if (password !== "2622004") {  // Her birthday - perfect choice!
+        document.body.innerHTML = "<div style='display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Segoe UI, sans-serif; text-align: center;'><div style='background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);'><h1 style='color: #ff5c8a;'>🔒 Access Denied</h1><p style='color: #444;'>This birthday surprise is for someone special only.</p><p style='color: #888; font-size: 14px; margin-top: 20px;'>🌸</p></div></div>";
+    }
+};
+</script>
+
+</head>
+
+<body>
+
+<div class="card">
+    <div id="question">
+        <h1>Just a small question 🌷</h1>
+        <p>Will you press “Yes”? 😊</p>
+
+        <div class="buttons">
+            <button id="yes">Yes 💗</button>
+            <button id="no">No 🙈</button>
+        </div>
+    </div>
+
+    <div id="message">
+        <h1>Happy Birthday, May Khin 🎂</h1>
+        <p>
+            May you always be healthy,<br>
+            smile a little more every day,<br>
+            and find happiness in the little things ✨<br><br>
+
+            I hope today brings you warmth,<br>
+            comfort, and beautiful moments 🌸
+        </p>
+    </div>
+</div>
+
+<script>
+let size = 18;
+
+document.getElementById("no").addEventListener("click", () => {
+    size += 6;
+    const yes = document.getElementById("yes");
+    yes.style.fontSize = size + "px";
+    yes.style.padding = "14px " + (28 + size) + "px";
+});
+
+document.getElementById("yes").addEventListener("click", () => {
+    document.getElementById("question").style.display = "none";
+    document.getElementById("message").style.display = "block";
+});
+
+// floating hearts
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "-20px";
+    heart.style.fontSize = (14 + Math.random() * 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}, 700);
+</script>
+
+</body>
+</html>
